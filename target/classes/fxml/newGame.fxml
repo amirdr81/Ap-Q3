@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="NewGame"
+      prefHeight="720.0" prefWidth="1280.0"
+      stylesheets="@../styles/style.css" fx:id="pane" styleClass="background">
+        <ImageView fx:id="upperClouds"  styleClass="upperClouds"/>
+        <ImageView fx:id="upperClouds2"  styleClass="upperClouds"/>
+        <ImageView fx:id="cloud"  styleClass="cloud"/>
+        <ImageView fx:id="cloud2"  styleClass="cloud"/>
+        <ImageView fx:id="ground" y="250" styleClass="ground"/>
+        <ImageView fx:id="ground2" y="250" styleClass="ground"/>
+        <ImageView fx:id="shootType" fitHeight="50" fitWidth="50" styleClass="shootType"/>
+        <ImageView fx:id="boss" x="650" y="100" styleClass="boss"/>
+        <ImageView fx:id="miniP1" x="1280" y="200" styleClass="miniBossP"/>
+        <ImageView fx:id="miniP2" x="1355" y="200" styleClass="miniBossP"/>
+        <ImageView fx:id="miniP3" x="1430" y="200" styleClass="miniBossP"/>
+        <ImageView fx:id="miniP4" x="1505" y="200" styleClass="miniBossP"/>
+        <Text fx:id="bossNumberOfHealth" x="330" y="33" text="5000" styleClass="numberOfHealth"/>
+        <Text x="380" y="33" text="/ 5000" styleClass="numberOfHealth"/>
+        <Rectangle fx:id="bossHealth" x="70" y="10" width="250" height="30" styleClass="healthBoss"/>
+        <Rectangle x="70" y="10" width="250" height="30" styleClass="borderOfHealth"/>
+        <Text fx:id="planeNumberOfHealth" x="330" y="78" text="20" styleClass="numberOfHealth"/>
+        <Text x="355" y="78" text="/ 20" styleClass="numberOfHealth"/>
+        <Rectangle fx:id="planeHealth" x="70" y="55" width="250" height="30" styleClass="healthPlane"/>
+        <Rectangle x="70" y="55" width="250" height="30" styleClass="borderOfHealth"/>
+        <Rectangle fx:id="bombFull" x="430" y="60" width="1" height="25" styleClass="bombFull"/>
+        <Rectangle x="430" y="60" width="101" height="25" styleClass="borderOfHealth"/>
+        <Text fx:id="readyBomb" x="545" y="80" text="bomb is not ready :(" styleClass="numberOfHealth"/>
+        <ImageView fx:id="planeCrash"/>
+        <ImageView fx:id="plane" x="50" y="300"/>
+</Pane>
