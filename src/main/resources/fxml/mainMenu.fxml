@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="MainMenu"
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #644a4a" >
+    <right>
+        <Button fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
+    </right>
+    <center>
+        <VBox fx:id="list" spacing="13" alignment="CENTER" maxWidth="700" style="-fx-background-color: #be9e6a">
+            <Label styleClass="Title" text="Main Menu"/>
+            <Label/><Label/><Label/>
+            <Button styleClass="Button" text="new game" maxWidth="300" onMouseClicked="#playGame"/>
+            <Button styleClass="Button" text="score board" maxWidth="300" onMouseClicked="#scoreBoard"/>
+            <Button styleClass="Button" text="profile" maxWidth="300" onMouseClicked="#profileMenu"/>
+            <Button styleClass="Button" text="logout" maxWidth="300" onMouseClicked="#logout"/>
+            <Button styleClass="Button" text="exit" maxWidth="300" onMouseClicked="#exit"/>
+            <Label/><Label/><Label/>
+            <Label text="sharif university of technology"/>
+            <Label text="made by Amir Mohammad Derakhshandeh - 400101153"/>
+        </VBox>
+    </center>
+
+</BorderPane>

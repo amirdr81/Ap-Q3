@@ -1,0 +1,210 @@
+.Label{
+    -fx-background-color: #523b3b;
+    -fx-font-size: 30;
+    -fx-border-color: black;
+    -fx-pref-height: 55;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-pref-width: 250;
+    -fx-alignment: center;
+    -fx-border-width: 5;
+    -fx-text-fill: white;
+
+}
+.subTitle {
+    -fx-font-size: 25;
+    -fx-text-fill: white;
+    -fx-background-color: #7e0202;
+    -fx-border-color: black;
+    -fx-pref-height: 55;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-pref-width: 700;
+    -fx-alignment: center;
+    -fx-border-width: 5;
+}
+
+.Title{
+    -fx-background-color: #523b3b;
+    -fx-font-size: 35;
+    -fx-border-color: black;
+    -fx-pref-height: 65;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-pref-width: 550;
+    -fx-alignment: center;
+    -fx-border-width: 5;
+    -fx-text-fill: white;
+}
+.description {
+    -fx-font-size: 25;
+}
+.TextField{
+    -fx-pref-height: 35;
+}
+.Button{
+    -fx-pref-width: 100;
+    -fx-background-color: #523b3b;
+    -fx-border-color: black;
+    -fx-border-width: 5;
+    -fx-border-radius: 2;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+.Button:hover{
+    -fx-pref-width: 100;
+    -fx-background-color: #9b2323;
+    -fx-border-color: black;
+    -fx-border-width: 5;
+    -fx-border-radius: 2;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
+.link{
+    -fx-text-fill: rgba(0, 42, 255, 0.84);
+}
+.link:hover{
+    -fx-text-fill: rgb(0, 146, 255);
+}
+.chart {
+    -fx-padding: 10px;
+    -fx-background-image: url("../photos/avatart/blue.png");
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: #dedddc; -fx-stroke-width: 2;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #dedddc; -fx-stroke-width: 2;
+}
+.plane {
+    -fx-image: url("../photos/avatart/red.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.Rectangle{
+    -fx-fill: red;
+    -fx-arc-width: 20;
+    -fx-arc-height: 20;
+}
+
+.ground {
+    -fx-image: url("../photos/background/birdhouse_bg_0004.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.boss {
+    -fx-image: url("../photos/bossFly/1.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.cloud {
+    -fx-image: url("../photos/background/birdhouse_bg_0005.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.upperClouds {
+    -fx-image: url("../photos/background/birdhouse_bg_0007.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.background {
+    -fx-background-image: url("../photos/background/sunShine.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 0 -1200;
+}
+
+.shootType {
+    -fx-image: url("../photos/bullet/shootType/normal.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.borderOfHealth {
+    -fx-fill: rgba(0, 0, 0, 0);
+    -fx-stroke-width: 10;
+    -fx-stroke: black;
+    -fx-arc-width: 20;
+    -fx-arc-height: 20;
+
+}
+
+.healthBoss {
+    -fx-fill: red;
+    -fx-arc-width: 20;
+    -fx-arc-height: 0;
+}
+.healthPlane {
+    -fx-fill: blue;
+    -fx-arc-width: 20;
+    -fx-arc-height: 0;
+}
+.numberOfHealth {
+    -fx-text-fill: black;
+    -fx-background-color: red;
+    -fx-font-size: 20;
+}
+.bossPic {
+    -fx-image: url("../photos/extra/1.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.bombFull {
+    -fx-fill: #048804;
+    -fx-arc-width: 20;
+    -fx-arc-height: 0;
+}
+
+.blueAvatar {
+    -fx-image: url("../photos/avatart/blue.png");
+    -fx-background-repeat: no-repeat;
+}
+.redAvatar {
+    -fx-image: url("../photos/avatart/red.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.miniBossP {
+    -fx-image: url("../photos/miniBoss/purple/1.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.miniBossY {
+    -fx-image: url("../photos/miniBoss/yellow/1.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.mute {
+    -fx-pref-width: 85;
+    -fx-background-color: #74ff00;
+    -fx-background-radius: 12;
+    -fx-border-color: black;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+}
+.mute:hover {
+    -fx-pref-width: 85;
+    -fx-background-color: #4da207;
+    -fx-background-radius: 12;
+    -fx-border-color: black;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+}
+
+.guide {
+    -fx-font-size: 19;
+    -fx-text-fill: white;
+    -fx-background-color: #7e0202;
+    -fx-border-color: black;
+    -fx-pref-height: 35;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-pref-width: 300;
+    -fx-alignment: center;
+    -fx-border-width: 5;
+}

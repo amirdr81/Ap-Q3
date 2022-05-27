@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ScoreBoard"
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #644a4a">
+    <right>
+        <Button fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
+    </right>
+    <center>
+        <VBox spacing="13" alignment="CENTER" maxWidth="700" fx:id="list" style="-fx-background-color: #be9e6a">
+            <Label styleClass="Title" text="score board"/>
+            <Label/><Label/><Label/>
+            <Button styleClass="Button" text="show board" maxWidth="350" onMouseClicked="#showScoreBoard"/>
+            <Button styleClass="Button" text="back to profile menu" maxWidth="350" onMouseClicked="#mainMenu"/>
+            <Label/><Label/><Label/><Label/>
+            <Label text="sharif university of technology" maxWidth="300" alignment="CENTER"/>
+            <Label text="made by Amir Mohammad Derakhshandeh - 400101153" alignment="CENTER"/>
+        </VBox>
+    </center>
+
+</BorderPane>
