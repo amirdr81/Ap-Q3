@@ -110,6 +110,7 @@ public class NewGame extends Application {
                 if(flag == 0 && Integer.parseInt(bossNumberOfHealth.getText()) <= 2500) {
                     flag = 1;
                     bossAnimation.pause();
+                    bossModel.getImageView().setY(350);
                     devilModeP2Animation devilModeP2Animation = new devilModeP2Animation(bossModel);
                     devilModeP2Animation.play();
                 }
