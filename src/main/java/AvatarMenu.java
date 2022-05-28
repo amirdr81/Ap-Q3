@@ -1,18 +1,14 @@
-
 import Model.Menu.Menu;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
-import java.io.IOException;
 import java.net.URL;
 
 public class AvatarMenu extends Application {
@@ -20,26 +16,18 @@ public class AvatarMenu extends Application {
     public ImageView imageView;
     public Button mute;
 
-    private void enterMenu(MouseEvent mouseEvent, String name) throws IOException {
-        AudioClip audioClip = new AudioClip(getClass().getResource("audio/changeMenu.wav").toExternalForm());
-        audioClip.play();
+    private void profileMenu(MouseEvent mouseEvent) throws Exception {
+        ProfilePage profilePage = new ProfilePage();
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        URL address = new URL(ProfilePage.class.getResource(name).toExternalForm());
-        Parent root = FXMLLoader.load(address);
-        stage.setScene(new Scene(root));
-        stage.show();
+        profilePage.start(stage);
     }
-
-    private void profileMenu(MouseEvent mouseEvent) throws IOException {
-        enterMenu(mouseEvent, "fxml/profilePage.fxml");
-    }
-    public void blueChosen(MouseEvent mouseEvent) throws IOException {
+    public void blueChosen(MouseEvent mouseEvent) throws Exception {
         Menu.loggedInUser.setAvatar("blue");
         if(!Menu.loggedInUser.getUsername().equals(""))
             menuController.writeDataOnJson();
         profileMenu(mouseEvent);
     }
-    public void redChosen(MouseEvent mouseEvent) throws IOException {
+    public void redChosen(MouseEvent mouseEvent) throws Exception {
         Menu.loggedInUser.setAvatar("red");
         if(!Menu.loggedInUser.getUsername().equals(""))
             menuController.writeDataOnJson();

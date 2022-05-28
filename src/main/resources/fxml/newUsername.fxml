@@ -8,20 +8,22 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="NewUsername"
-            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #644a4a">
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" styleClass="profileBack">
     <right>
         <Button fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
     </right>
     <center>
-        <VBox spacing="13" alignment="CENTER" maxWidth="700" fx:id="list" style="-fx-background-color: #be9e6a">
-            <Label styleClass="Title" text="new username menu" />
+        <VBox spacing="13" alignment="CENTER" maxWidth="500" fx:id="list"
+              style="-fx-background-color: #ffd500; -fx-border-color: black; -fx-border-width: 5">
+            <Label styleClass="Title" text="new username menu" maxWidth="450"/>
             <Label styleClass="description" text="enter current username"/>
-            <TextField fx:id="currUsername" styleClass="TextField" promptText=" current username" maxWidth="500"/>
+            <TextField fx:id="currUsername" styleClass="TextField" promptText=" current username" maxWidth="350"/>
             <Label styleClass="description" text="enter new username"/>
-            <TextField fx:id="newUsername" styleClass="TextField" promptText=" new username" maxWidth="500"/>
+            <TextField fx:id="newUsername" styleClass="TextField" promptText=" new username" maxWidth="350"/>
+            <Label/><Label/><Label/>
             <Button styleClass="Button" text="done" maxWidth="300" onMouseClicked="#addTask"/>
             <Button styleClass="Button" text="back to profile menu" maxWidth="300" onMouseClicked="#profileMenu"/>
-            <Label/><Label/><Label/>
+            <Label/>
             <Label text="sharif university of technology" maxWidth="300" alignment="CENTER"/>
             <Label text="made by Amir Mohammad Derakhshandeh - 400101153" alignment="CENTER"/>
         </VBox>

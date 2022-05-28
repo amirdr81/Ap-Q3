@@ -5,13 +5,13 @@
 
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <Pane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="NewGame"
       prefHeight="720.0" prefWidth="1280.0"
-      stylesheets="@../styles/style.css" fx:id="pane" styleClass="background">
+      stylesheets="@../styles/style.css" fx:id="pane">
+        <ImageView layoutY="-1200" fx:id="mainBackground"  styleClass="background"/>
         <ImageView fx:id="upperClouds"  styleClass="upperClouds"/>
         <ImageView fx:id="upperClouds2"  styleClass="upperClouds"/>
         <ImageView fx:id="cloud"  styleClass="cloud"/>
@@ -36,5 +36,7 @@
         <Rectangle x="430" y="60" width="101" height="25" styleClass="borderOfHealth"/>
         <Text fx:id="readyBomb" x="545" y="80" text="bomb is not ready :(" styleClass="numberOfHealth"/>
         <ImageView fx:id="planeCrash"/>
+        <Text style="-fx-font-size: 23" text="Time : " x="70" y="119"/>
+        <Text x="135"  y="120" text="00 : 00" fx:id="timeCurr" styleClass="guide"/>
         <ImageView fx:id="plane" x="50" y="300"/>
 </Pane>

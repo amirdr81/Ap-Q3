@@ -6,9 +6,9 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="guideLine"
-            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #644a4a">
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" styleClass="guideLineBack">
     <center>
-        <VBox spacing="13" alignment="CENTER" maxWidth="700" fx:id="list" style="-fx-background-color: #be9e6a">
+        <VBox spacing="13" alignment="CENTER" maxWidth="700" fx:id="list">
             <Label text="game guide line" styleClass="Label"/>
             <Label text="W: Up" styleClass="guide"/>
             <Label text="S: Down" styleClass="guide"/>

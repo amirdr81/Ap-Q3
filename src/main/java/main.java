@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.media.AudioClip;
@@ -12,9 +11,8 @@ public class main extends Application{
     public void start(Stage stage) throws Exception {
         audioClip.play();
         menuController.updateDatabase();
-        URL address = new URL(getClass().getResource("fxml/loginPage.fxml").toExternalForm());
-        Parent root1 = FXMLLoader.load(address);
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(FXMLLoader.load(
+                new URL(getClass().getResource("fxml/welcomePage.fxml").toExternalForm()))));
         stage.show();
     }
 

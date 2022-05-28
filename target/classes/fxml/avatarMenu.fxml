@@ -4,23 +4,14 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.image.ImageView?>
-<BorderPane xmlns="http://javafx.com/javafx"
+<Pane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="AvatarMenu"
-            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #644a4a">
-    <right>
-        <Button fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
-    </right>
-    <center>
-        <VBox spacing="13" alignment="CENTER" maxWidth="700" fx:id="list" style="-fx-background-color: #be9e6a">
-            <Label styleClass="Title" text="avatar menu" />
-            <Button styleClass="Button" text="blue" onMouseClicked="#blueChosen"/>
-            <ImageView styleClass="blueAvatar"/>
-            <Button styleClass="Button" text="red" onMouseClicked="#redChosen"/>
-            <ImageView styleClass="redAvatar"/>
-            <Label text="sharif university of technology"/>
-            <Label text="made by Amir Mohammad Derakhshandeh - 400101153"/>
-        </VBox>
-    </center>
-
-</BorderPane>
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" styleClass="avatarMenu">
+    <Button layoutX="1200" fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
+    <Label layoutX="340" layoutY="40" styleClass="Title" text="avatar menu" />
+    <Button layoutX="400" layoutY="400" styleClass="Button" text="blue" onMouseClicked="#blueChosen"/>
+    <ImageView layoutX="400" layoutY="265" styleClass="blueAvatar"/>
+    <Button layoutX="750" layoutY="400" styleClass="Button" text="red" onMouseClicked="#redChosen"/>
+    <ImageView layoutX="750" layoutY="265" styleClass="redAvatar"/>
+</Pane>

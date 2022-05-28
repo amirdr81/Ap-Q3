@@ -1,5 +1,5 @@
 .Label{
-    -fx-background-color: #523b3b;
+    -fx-background-color: #00ff78;
     -fx-font-size: 30;
     -fx-border-color: black;
     -fx-pref-height: 55;
@@ -8,13 +8,13 @@
     -fx-pref-width: 250;
     -fx-alignment: center;
     -fx-border-width: 5;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 
 }
 .subTitle {
     -fx-font-size: 25;
-    -fx-text-fill: white;
-    -fx-background-color: #7e0202;
+    -fx-text-fill: black;
+    -fx-background-color: #00ff78;
     -fx-border-color: black;
     -fx-pref-height: 55;
     -fx-border-radius: 5;
@@ -25,7 +25,7 @@
 }
 
 .Title{
-    -fx-background-color: #523b3b;
+    -fx-background-color: #00ff78;
     -fx-font-size: 35;
     -fx-border-color: black;
     -fx-pref-height: 65;
@@ -34,30 +34,31 @@
     -fx-pref-width: 550;
     -fx-alignment: center;
     -fx-border-width: 5;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 .description {
     -fx-font-size: 25;
 }
 .TextField{
     -fx-pref-height: 35;
+    -fx-pref-width: 100;
 }
 .Button{
     -fx-pref-width: 100;
-    -fx-background-color: #523b3b;
+    -fx-background-color: #00ff78;
     -fx-border-color: black;
-    -fx-border-width: 5;
+    -fx-border-width: 8;
     -fx-border-radius: 2;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-size: 20;
 }
 .Button:hover{
     -fx-pref-width: 100;
-    -fx-background-color: #9b2323;
+    -fx-background-color: #019d16;
     -fx-border-color: black;
-    -fx-border-width: 5;
+    -fx-border-width: 8;
     -fx-border-radius: 2;
-    -fx-text-fill: white;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 20;
 }
 .link{
@@ -111,9 +112,8 @@
 }
 
 .background {
-    -fx-background-image: url("../photos/background/sunShine.png");
+    -fx-image: url("../photos/background/sunShine.png");
     -fx-background-repeat: no-repeat;
-    -fx-background-position: 0 -1200;
 }
 
 .shootType {
@@ -207,4 +207,66 @@
     -fx-pref-width: 300;
     -fx-alignment: center;
     -fx-border-width: 5;
+}
+
+.loginBackGround {
+    -fx-background-image: url("../photos/background/menus/loginBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1280 720;
+}
+
+.mainMenuBack {
+    -fx-background-image: url("../photos/background/menus/mainMenuBack.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 700 720;
+}
+
+.welcomePage {
+    -fx-background-image: url("../photos/background/menus/welcome.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1280 720;
+}
+
+.profileBack {
+    -fx-background-image: url("../photos/background/menus/profilePage.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1280 720;
+}
+
+.simpleCupHeadImg {
+    -fx-image: url("../photos/background/menus/mainMenu.jpg");
+    -fx-border-color: black;
+    -fx-border-width: 5;
+    -fx-background-repeat: no-repeat;
+}
+.simpleCupHeadImgReverse {
+    -fx-image: url("../photos/background/menus/reverse.png");
+    -fx-border-color: black;
+    -fx-border-width: 5;
+    -fx-background-repeat: no-repeat;
+}
+
+.registerBack {
+    -fx-background-image: url("../photos/background/menus/registerBack.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 700 720;
+    -fx-background-position: 580;
+}
+
+.guideLineBack {
+    -fx-background-image: url("../photos/background/menus/guideLine.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1280 720;
+}
+
+.avatarMenu {
+    -fx-background-image: url("../photos/background/menus/avatarBackground.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1280 720;
+}
+
+.pause {
+    -fx-image: url("../photos/extra/pause.png");
+    -fx-background-image: url("../photos/extra/pause.png");
+    -fx-background-repeat: no-repeat;
 }

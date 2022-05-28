@@ -4,20 +4,24 @@ import Model.Menu.miniBoss;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import transition.*;
+
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Timer;
@@ -46,16 +50,38 @@ public class NewGame extends Application {
     public ImageView miniP2;
     public ImageView miniP3;
     public ImageView miniP4;
-    private int tmp = 1;
+    public Text timeCurr;
+    private int tmp = 1, flag = 0, bwFlag = 0;
     private boolean typeOfShoot = true;
-    private int flag = 0;
     private boss bossModel;
     private plane planeModel;
     private int timeCounter = 0;
+    @FXML
+    private ImageView mainBackground;
     private final ImageView[] purpleMini = new ImageView[4];
     private miniBoss[] miniBosses;
     public AudioClip audioClip = new AudioClip(getClass().getResource("audio/gameSound.mp3").toExternalForm());
+    private backgroundAnimation groundAnimation;
+    private backgroundAnimation cloudAnimation;
+    private backgroundAnimation upperCloud;
+    private backgroundAnimation groundAnimation2;
+    private backgroundAnimation cloudAnimation2;
+    private backgroundAnimation upperCloud2;
+    private backgroundAnimation mainBackgroundAnimation;
     public void initialize() throws InterruptedException {
+        groundAnimation = new backgroundAnimation(ground, 2);
+        cloudAnimation = new backgroundAnimation(cloud, 1.7);
+        upperCloud = new backgroundAnimation(upperClouds, 2);
+        groundAnimation2 = new backgroundAnimation(ground2, 2);
+        cloudAnimation2 = new backgroundAnimation(cloud2, 1.7);
+        upperCloud2 = new backgroundAnimation(upperClouds2, 2);
+        mainBackgroundAnimation = new backgroundAnimation(mainBackground, 0);
+        groundAnimation.getBackground().setX(0);
+        cloudAnimation.getBackground().setX(0);
+        upperCloud.getBackground().setX(0);
+        groundAnimation2.getBackground().setX(1280);
+        cloudAnimation2.getBackground().setX(1280);
+        upperCloud2.getBackground().setX(1280);
         miniBosses = new miniBoss[4];
         miniBosses[0] = new miniBoss(miniP1);
         miniBosses[1] = new miniBoss(miniP2);
@@ -93,6 +119,18 @@ public class NewGame extends Application {
                 planeModel.getImageView().setX(planeModel.getImageView().getX() + tmp);
                 planeModel.getImageView().setY(planeModel.getImageView().getY() + tmp);
                 timeCounter++;
+                if(timeCounter % 10 == 0) {
+                    if((timeCounter / 10) % 60 != 0 && ((timeCounter / 10) % 60) > 9)
+                        timeCurr.setText(timeCurr.getText().substring(0,5) + String.valueOf((timeCounter / 10) % 60));
+                    else if((timeCounter / 10) % 60 != 0)
+                        timeCurr.setText(timeCurr.getText().substring(0,5) + "0" + String.valueOf((timeCounter / 10) % 60));
+                    else {
+                        if(Integer.parseInt(timeCurr.getText().substring(0,2)) > 9)
+                            timeCurr.setText((timeCounter / 600) + " : 00");
+                        else
+                            timeCurr.setText("0" + (timeCounter / 600) + " : 00");
+                    }
+                }
                 if(timeCounter % 100 == 0) {
                     for(int i = 0; i < 4; i++) {
                         purpleMini[i].setImage(new Image(miniBossAnimation.getFrame1()));
@@ -161,6 +199,8 @@ public class NewGame extends Application {
                         {
                             shotAudio.play();
                             bullet bullet = new bullet(plane.getX() + 100, plane.getY() + 40);
+                            if(bwFlag == 1)
+                                menuController.adjustColor(bullet.getImageView(), -1);
                             ImageView bulletExplosion = new ImageView();
                             bulletExplosionAnimation bulletExplosionAnimation = new bulletExplosionAnimation(bulletExplosion, plane);
                             pane.getChildren().add(bulletExplosion);
@@ -172,6 +212,8 @@ public class NewGame extends Application {
                         {
                             shotAudio.play();
                             bomb bomb = new bomb(plane.getX() + 100, plane.getY() + 40);
+                            if(bwFlag == 1)
+                                menuController.adjustColor(bomb.getImageView(), -1);
                             pane.getChildren().add(bomb.getImageView());
                             bombAnimation bombAnimation = new bombAnimation(bomb, bossModel, planeModel, bombFull, bossHealth, bossNumberOfHealth, readyBomb, miniBosses);
                             bombAnimation.play();
@@ -180,11 +222,42 @@ public class NewGame extends Application {
                     case "Esc":
                         Platform.exit();
                         break;
+                    case "L":
+                        if(bwFlag == 0) {
+                            bwFlag = 1;
+                            blackAndWhite(-1);
+                        }
+                        else if(bwFlag == 1) {
+                            bwFlag = 0;
+                            blackAndWhite(0);
+                        }
+                        break;
+                    case "M":
+                        if(audioClip.isPlaying())
+                            audioClip.stop();
+                        else
+                            audioClip.play();
+                        break;
                 }
             }
         });
     }
-
+    private void blackAndWhite(int n) {
+        menuController.adjustColor(bossModel.getImageView(), n);
+        menuController.adjustColor(planeModel.getImageView(),n);
+        menuController.adjustColor(bossModel.getBall().getImageView(),n);
+        menuController.adjustColor(groundAnimation.getBackground(),n);
+        menuController.adjustColor(groundAnimation2.getBackground(),n);
+        menuController.adjustColor(upperCloud.getBackground(),n);
+        menuController.adjustColor(upperCloud2.getBackground(),n);
+        menuController.adjustColor(cloudAnimation.getBackground(),n);
+        menuController.adjustColor(cloudAnimation2.getBackground(),n);
+        menuController.adjustColor(miniBosses[0].getImageView(),n);
+        menuController.adjustColor(miniBosses[1].getImageView(),n);
+        menuController.adjustColor(miniBosses[2].getImageView(),n);
+        menuController.adjustColor(miniBosses[3].getImageView(),n);
+        menuController.adjustColor(mainBackgroundAnimation.getBackground(),n);
+    }
     private void changeShootType()
     {
         if(typeOfShoot)
@@ -196,18 +269,6 @@ public class NewGame extends Application {
     }
     private void backgroundAnimations()
     {
-        backgroundAnimation groundAnimation = new backgroundAnimation(ground, 2);
-        groundAnimation.getBackground().setX(0);
-        backgroundAnimation cloudAnimation = new backgroundAnimation(cloud, 1.7);
-        cloudAnimation.getBackground().setX(0);
-        backgroundAnimation upperCloud = new backgroundAnimation(upperClouds, 2);
-        upperCloud.getBackground().setX(0);
-        backgroundAnimation groundAnimation2 = new backgroundAnimation(ground2, 2);
-        groundAnimation2.getBackground().setX(1280);
-        backgroundAnimation cloudAnimation2 = new backgroundAnimation(cloud2, 1.7);
-        cloudAnimation2.getBackground().setX(1280);
-        backgroundAnimation upperCloud2 = new backgroundAnimation(upperClouds2, 2);
-        upperCloud2.getBackground().setX(1280);
         groundAnimation.play();
         groundAnimation2.play();
         cloudAnimation.play();
@@ -274,6 +335,12 @@ public class NewGame extends Application {
     }
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void pauseGame(MouseEvent mouseEvent) throws Exception {
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        EndGame endGame = new EndGame();
+        endGame.start(stage);
     }
 }
 

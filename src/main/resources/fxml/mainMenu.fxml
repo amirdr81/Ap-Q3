@@ -3,15 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="MainMenu"
-            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #644a4a" >
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/style.css" style="-fx-background-color: #ffd500">
+    <ImageView  layoutX="40" layoutY="175" fitWidth="300" fitHeight="400" styleClass="simpleCupHeadImgReverse"/>
+    <ImageView layoutX="940" layoutY="175" fitWidth="300" fitHeight="400" styleClass="simpleCupHeadImg"/>
     <right>
-        <Button fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
+        <VBox spacing="13"  maxWidth="290">
+            <Button fx:id="mute" text="mute" styleClass="mute" onMouseClicked="#mute"/>
+        </VBox>
     </right>
     <center>
-        <VBox fx:id="list" spacing="13" alignment="CENTER" maxWidth="700" style="-fx-background-color: #be9e6a">
+        <VBox fx:id="list" spacing="13" alignment="CENTER" maxWidth="700">
             <Label styleClass="Title" text="Main Menu"/>
             <Label/><Label/><Label/>
             <Button styleClass="Button" text="new game" maxWidth="300" onMouseClicked="#playGame"/>

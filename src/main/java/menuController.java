@@ -3,6 +3,8 @@ import Model.Menu.Menu;
 import com.google.gson.Gson;
 import enums.registerEnum;
 import javafx.scene.control.Button;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 
 import java.io.*;
@@ -18,6 +20,12 @@ public class menuController {
             mute.setText("mute");
             main.audioClip.play();
         }
+    }
+    public static void adjustColor(ImageView imageView, int n)
+    {
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setSaturation(n);
+        imageView.setEffect(colorAdjust);
     }
     public static void playChangeMenu()
     {

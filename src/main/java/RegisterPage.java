@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -106,7 +107,7 @@ public class RegisterPage extends Application {
     }
     public void start(Stage stage) throws Exception {
         menuController.playChangeMenu();
-        BorderPane root = FXMLLoader.load(new URL(NewGame.class.getResource("fxml/registerPage.fxml").toExternalForm()));
+        Pane root = FXMLLoader.load(new URL(NewGame.class.getResource("fxml/registerPage.fxml").toExternalForm()));
         stage.setScene(new Scene(root));
         stage.show();
     }
