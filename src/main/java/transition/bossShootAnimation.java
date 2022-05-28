@@ -3,7 +3,6 @@ package transition;
 import javafx.animation.Transition;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
-
 import javafx.scene.image.ImageView;
 
 public class bossShootAnimation extends Transition {

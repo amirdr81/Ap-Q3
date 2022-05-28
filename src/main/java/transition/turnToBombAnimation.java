@@ -8,7 +8,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.scene.shape.Rectangle;
 
-
 public class turnToBombAnimation extends Transition {
     private final plane plane;
     private final boss boss;
@@ -65,6 +64,7 @@ public class turnToBombAnimation extends Transition {
                 frameCounter++;
         }
         if(frameCounter == 39) {
+            plane.setScore(plane.getScore() + 1);
             plane.getImageView().setX(plane.getImageView().getX() + 100);
             plane.getImageView().setY(plane.getImageView().getY() + 100);
             plane.getImageView().setFitWidth(100);

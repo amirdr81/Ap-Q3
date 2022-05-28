@@ -2,10 +2,8 @@
 
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
-
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Button?>
 <Pane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="NewGame"
@@ -38,5 +36,7 @@
         <ImageView fx:id="planeCrash"/>
         <Text style="-fx-font-size: 23" text="Time : " x="70" y="119"/>
         <Text x="135"  y="120" text="00 : 00" fx:id="timeCurr" styleClass="guide"/>
+        <Text style="-fx-font-size: 23" y="154" x="70" text="Score : "/>
+        <Text x="140" y="155" text="0" fx:id="scoreCurr" styleClass="guide"/>
         <ImageView fx:id="plane" x="50" y="300"/>
 </Pane>

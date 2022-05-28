@@ -5,23 +5,17 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import transition.*;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Timer;
@@ -29,45 +23,23 @@ import java.util.TimerTask;
 
 public class NewGame extends Application {
 
-    public ImageView plane;
-    public ImageView boss;
-    public ImageView ground;
-    public ImageView cloud;
+    public ImageView plane, boss, ground, ground2, cloud, cloud2, upperClouds,
+            upperClouds2, shootType, planeCrash, miniP1, miniP2, miniP3, miniP4, mainBackground;
     public Pane pane;
-    public ImageView upperClouds;
-    public ImageView upperClouds2;
-    public ImageView cloud2;
-    public ImageView ground2;
-    public ImageView shootType;
-    public Rectangle bossHealth;
-    public Text bossNumberOfHealth;
-    public Text planeNumberOfHealth;
-    public Rectangle planeHealth;
-    public ImageView planeCrash;
-    public Rectangle bombFull;
-    public Text readyBomb;
-    public ImageView miniP1;
-    public ImageView miniP2;
-    public ImageView miniP3;
-    public ImageView miniP4;
-    public Text timeCurr;
-    private int tmp = 1, flag = 0, bwFlag = 0;
+    public Rectangle bossHealth, planeHealth, bombFull;
+    public Text bossNumberOfHealth, planeNumberOfHealth, readyBomb, timeCurr, scoreCurr;
+    private int tmp = 1, flag = 0, bwFlag = 0, highHealth = 5000, timeCounter = 0;
     private boolean typeOfShoot = true;
     private boss bossModel;
     private plane planeModel;
-    private int timeCounter = 0;
     @FXML
-    private ImageView mainBackground;
     private final ImageView[] purpleMini = new ImageView[4];
     private miniBoss[] miniBosses;
-    public AudioClip audioClip = new AudioClip(getClass().getResource("audio/gameSound.mp3").toExternalForm());
-    private backgroundAnimation groundAnimation;
-    private backgroundAnimation cloudAnimation;
-    private backgroundAnimation upperCloud;
-    private backgroundAnimation groundAnimation2;
-    private backgroundAnimation cloudAnimation2;
-    private backgroundAnimation upperCloud2;
-    private backgroundAnimation mainBackgroundAnimation;
+    public AudioClip audioClip = new AudioClip(Objects.requireNonNull(getClass().getResource("audio/gameSound.mp3")).toExternalForm()),
+            shotAudio = new AudioClip(Objects.requireNonNull(getClass().getResource("audio/shot.wav")).toExternalForm()),
+            changeAudio = new AudioClip(Objects.requireNonNull(getClass().getResource("audio/attack.wav")).toExternalForm());;
+    private backgroundAnimation groundAnimation, groundAnimation2,
+            upperCloud, upperCloud2, cloudAnimation, cloudAnimation2, mainBackgroundAnimation;
     public void initialize() throws InterruptedException {
         groundAnimation = new backgroundAnimation(ground, 2);
         cloudAnimation = new backgroundAnimation(cloud, 1.7);
@@ -92,8 +64,6 @@ public class NewGame extends Application {
         purpleMini[2] = miniP3;
         purpleMini[3] = miniP4;
         miniBossAnimation miniBossAnimation = new miniBossAnimation(purpleMini);
-        AudioClip shotAudio = new AudioClip(getClass().getResource("audio/shot.wav").toExternalForm());
-        AudioClip changeAudio = new AudioClip(getClass().getResource("audio/attack.wav").toExternalForm());
         backgroundAnimations();
         bossModel = new boss(boss);
         planeModel = new plane(plane);
@@ -140,18 +110,20 @@ public class NewGame extends Application {
                     miniBossAnimation.play();
                 }
                 tmp *= -1;
+                if(bossModel.getHealth() <= highHealth - 100) {
+                    planeModel.setScore(planeModel.getScore() + 1);
+                    highHealth = bossModel.getHealth();
+                }
+                scoreCurr.setText(String.valueOf(planeModel.getScore()));
             }
         }, 0, 100);
         plane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                if(flag == 0 && Integer.parseInt(bossNumberOfHealth.getText()) <= 2500) {
-                    flag = 1;
-                    bossAnimation.pause();
-                    bossModel.getImageView().setY(350);
-                    devilModeP2Animation devilModeP2Animation = new devilModeP2Animation(bossModel);
-                    devilModeP2Animation.play();
-                }
+                if(flag == 0 && Integer.parseInt(bossNumberOfHealth.getText()) <= 2500)
+                    turnToDevilMode(bossAnimation);
+                if(bossModel.getHealth() <= 0)
+                    Platform.exit();
                 String keyName = keyEvent.getCode().getName();
                 planeAnimation planeAnimation = new planeAnimation(planeModel, bossModel, planeNumberOfHealth, planeHealth, planeCrash, miniBosses);
                 switch (keyName) {
@@ -180,15 +152,8 @@ public class NewGame extends Application {
                         }
                         break;
                     case "R":
-                        if(bombFull.getWidth() >= 101 && !planeModel.isBlink()) {
-                            readyBomb.setText("bomb is not ready :(");
-                            changeAudio.play();
-                            planeModel.setBombFull(0);
-                            planeModel.setBlink();
-                            turnToBombAnimation turnToBombAnimation = new turnToBombAnimation(planeModel, bossModel, bossHealth, bossNumberOfHealth);
-                            turnToBombAnimation.play();
-                            bombFull.setWidth(1);
-                        }
+                        if(bombFull.getWidth() >= 101 && !planeModel.isBlink())
+                            turnToBomb();
                         break;
                     case "Tab":
                         changeAudio.play();
@@ -196,28 +161,9 @@ public class NewGame extends Application {
                         break;
                     case "Space":
                         if (typeOfShoot) //normal shoot
-                        {
-                            shotAudio.play();
-                            bullet bullet = new bullet(plane.getX() + 100, plane.getY() + 40);
-                            if(bwFlag == 1)
-                                menuController.adjustColor(bullet.getImageView(), -1);
-                            ImageView bulletExplosion = new ImageView();
-                            bulletExplosionAnimation bulletExplosionAnimation = new bulletExplosionAnimation(bulletExplosion, plane);
-                            pane.getChildren().add(bulletExplosion);
-                            pane.getChildren().add(bullet.getImageView());
-                            bulletAnimation bulletAnimation = new bulletAnimation(bullet, bossModel, bossHealth, bombFull, bossNumberOfHealth, planeModel, readyBomb, miniBosses);
-                            bulletAnimation.play();
-                            bulletExplosionAnimation.play();
-                        } else //bomb
-                        {
-                            shotAudio.play();
-                            bomb bomb = new bomb(plane.getX() + 100, plane.getY() + 40);
-                            if(bwFlag == 1)
-                                menuController.adjustColor(bomb.getImageView(), -1);
-                            pane.getChildren().add(bomb.getImageView());
-                            bombAnimation bombAnimation = new bombAnimation(bomb, bossModel, planeModel, bombFull, bossHealth, bossNumberOfHealth, readyBomb, miniBosses);
-                            bombAnimation.play();
-                        }
+                            shootNormal();
+                        else //bomb
+                            shootBomb();
                         break;
                     case "Esc":
                         Platform.exit();
@@ -323,6 +269,44 @@ public class NewGame extends Application {
         planeModel.setBlink();
         blinkPlaneAnimation.play();
     }
+    private void shootNormal() {
+        shotAudio.play();
+        bullet bullet = new bullet(plane.getX() + 100, plane.getY() + 40);
+        if(bwFlag == 1)
+            menuController.adjustColor(bullet.getImageView(), -1);
+        ImageView bulletExplosion = new ImageView();
+        bulletExplosionAnimation bulletExplosionAnimation = new bulletExplosionAnimation(bulletExplosion, plane);
+        pane.getChildren().add(bulletExplosion);
+        pane.getChildren().add(bullet.getImageView());
+        bulletAnimation bulletAnimation = new bulletAnimation(bullet, bossModel, bossHealth, bombFull, bossNumberOfHealth, planeModel, readyBomb, miniBosses);
+        bulletAnimation.play();
+        bulletExplosionAnimation.play();
+    }
+    private void shootBomb() {
+        shotAudio.play();
+        bomb bomb = new bomb(plane.getX() + 100, plane.getY() + 40);
+        if(bwFlag == 1)
+            menuController.adjustColor(bomb.getImageView(), -1);
+        pane.getChildren().add(bomb.getImageView());
+        bombAnimation bombAnimation = new bombAnimation(bomb, bossModel, planeModel, bombFull, bossHealth, bossNumberOfHealth, readyBomb, miniBosses);
+        bombAnimation.play();
+    }
+    private void turnToBomb() {
+        readyBomb.setText("bomb is not ready :(");
+        changeAudio.play();
+        planeModel.setBombFull(0);
+        planeModel.setBlink();
+        turnToBombAnimation turnToBombAnimation = new turnToBombAnimation(planeModel, bossModel, bossHealth, bossNumberOfHealth);
+        turnToBombAnimation.play();
+        bombFull.setWidth(1);
+    }
+    private void turnToDevilMode(bossAnimation bossAnimation) {
+        flag = 1;
+        bossAnimation.pause();
+        bossModel.getImageView().setY(350);
+        devilModeP2Animation devilModeP2Animation = new devilModeP2Animation(bossModel);
+        devilModeP2Animation.play();
+    }
     @Override
     public void start(Stage stage) throws Exception {
         main.audioClip.stop();
@@ -335,12 +319,6 @@ public class NewGame extends Application {
     }
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public void pauseGame(MouseEvent mouseEvent) throws Exception {
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        EndGame endGame = new EndGame();
-        endGame.start(stage);
     }
 }
 

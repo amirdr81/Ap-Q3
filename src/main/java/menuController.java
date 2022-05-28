@@ -8,9 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 
 import java.io.*;
+import java.util.Objects;
 
 public class menuController {
-    private static final AudioClip audioClip = new AudioClip(menuController.class.getResource("audio/changeMenu.wav").toExternalForm());
+    private static final AudioClip audioClip = new AudioClip(Objects.requireNonNull(menuController.class.getResource("audio/changeMenu.wav")).toExternalForm());
     public static void mute(Button mute) {
         if(main.audioClip.isPlaying()) {
             mute.setText("unmute");

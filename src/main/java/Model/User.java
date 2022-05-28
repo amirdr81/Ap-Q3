@@ -1,7 +1,5 @@
 package Model;
 
-import java.awt.*;
-
 public class User {
     private String username;
     private String password;

@@ -56,6 +56,7 @@ public class bombAnimation extends Transition {
             bomb.getImageView().setImage(null);
             boss.getBall().setHealth(boss.getBall().getHealth() - 1);
             if(boss.getBall().getHealth() == 0) {
+                plane.setScore(plane.getScore() + 1);
                 boss.stopBallAnimation();
                 boss.getBall().getImageView().setImage(null);
                 boss.rePositionBall();
@@ -71,6 +72,7 @@ public class bombAnimation extends Transition {
             assert tmp != null;
             tmp.setHealth(tmp.getHealth() - 1);
             if(tmp.getHealth() == 0) {
+                plane.setScore(plane.getScore() + 1);
                 tmp.getImageView().setX(1280 + indexOfMiniBoss(tmp) * 75);
                 tmp.getImageView().setImage(null);
                 tmp.setHealth(3);

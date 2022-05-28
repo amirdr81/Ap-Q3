@@ -7,7 +7,7 @@ public class boss {
     private final ImageView imageView;
     private int health = 5000;
     private final ball ball = new ball();
-    private ballAnimation ballAnimation;
+    private final ballAnimation ballAnimation;
 
     public boss(ImageView imageView)
     {

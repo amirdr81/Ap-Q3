@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="guideLine"
@@ -17,6 +16,8 @@
             <Label text="Space: shoot" styleClass="guide"/>
             <Label text="Tab: change type of shoot" styleClass="guide"/>
             <Label text="R: turn to bomb" styleClass="guide"/>
+            <Label text="L: change b/w mode" styleClass="guide"/>
+            <Label text="M: mute song" styleClass="guide"/>
             <Label text="Esc: exit" styleClass="guide"/>
             <Button text="start" styleClass="Button" onMouseClicked="#startGame"/>
         </VBox>

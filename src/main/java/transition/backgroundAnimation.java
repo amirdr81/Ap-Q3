@@ -2,7 +2,6 @@ package transition;
 
 import javafx.animation.Transition;
 import javafx.util.Duration;
-
 import javafx.scene.image.ImageView;
 
 public class backgroundAnimation extends Transition {

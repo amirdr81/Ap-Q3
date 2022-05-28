@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.util.Objects;
 
 public class MainMenu extends Application {
     public static VBox list;
@@ -44,7 +45,7 @@ public class MainMenu extends Application {
 
     public void start(Stage stage) throws Exception {
         menuController.playChangeMenu();
-        URL address = new URL(getClass().getResource("fxml/mainMenu.fxml").toExternalForm());
+        URL address = new URL(Objects.requireNonNull(getClass().getResource("fxml/mainMenu.fxml")).toExternalForm());
         Parent root = FXMLLoader.load(address);
         stage.setScene(new Scene(root));
         stage.show();

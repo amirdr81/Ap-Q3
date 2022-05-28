@@ -7,6 +7,7 @@ public class plane {
     private int health = 20;
     private boolean isBlink = false;
     private int bombFull = 0;
+    private int score = 0;
 
     public plane(ImageView imageView)
     {
@@ -15,6 +16,14 @@ public class plane {
 
     public ImageView getImageView() {
         return imageView;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public int getHealth() {

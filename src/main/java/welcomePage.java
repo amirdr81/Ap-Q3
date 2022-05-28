@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.stage.Stage;
-
 import javafx.scene.input.MouseEvent;
 
 public class welcomePage extends Application {
@@ -17,10 +16,4 @@ public class welcomePage extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    public void pauseGame(MouseEvent mouseEvent) throws Exception {
-        EndGame endGame = new EndGame();
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        endGame.start(stage);
-    }
-
 }
